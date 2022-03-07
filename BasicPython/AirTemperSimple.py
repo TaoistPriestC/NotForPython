@@ -98,7 +98,7 @@ if __name__ == '__main__':
     ## Using MBGD(Mini-batch gradiant descent) method to optimize the model
     try:
         ### Try to load the pkl that used to set paramters
-        myNN.load_state_dict(torch.load("AirTemper.pkl"))
+        myNN.load_state_dict(torch.load("./pkl/AirTemper.pkl"))
 
     except FileNotFoundError as e:
         ### Train it again if there is no pkl file
@@ -126,7 +126,7 @@ if __name__ == '__main__':
                 print("the {:0>3d}-th epoch : {:5f}".format(i, np.mean(batch_loss)))
         
         ### Save the model
-        torch.save(myNN.state_dict(),"AirTemper.pkl")
+        torch.save(myNN.state_dict(),"./pkl/AirTemper.pkl")
 
     finally:
         ### Display the difference between real value and predict value

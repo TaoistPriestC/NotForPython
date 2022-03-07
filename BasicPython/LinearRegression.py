@@ -63,10 +63,10 @@ if __name__ == '__main__':
         if (ep + 1) % 50 == 0:
             print("epoch = {}, loss = {}".format(ep + 1, loss.item()))
 
-    ## Using load_state_dict() to load the pkl file,
+    ## Using model.load_state_dict() to load the pkl file,
     ## Only training once then the model can be reused!
 
-    torch.save(model.state_dict(), "LinearRegression.pkl")
+    torch.save(model.state_dict(), "./pkl/LinearRegression.pkl")
 
 
     ## Once you activate CUDA, you must pay attention to CPU-GPU conversion! 
