@@ -3,7 +3,7 @@
 #### (1.1) 自建数组
 
 ```python
-# GenerallyConstructing data require the following steps:
+# Constructing data require the following steps:
 # List -> np.array -> Tensor
 
 ```
@@ -33,4 +33,14 @@ x + y = array([
     [5, 6, 7]
 ])
 ```
+
+
+
+这种数组与矩阵的维度问题也会出现于torch框架中，比如下列这个经典的报错信息，解决办法是把前向传播的预测值，通过 `sequeeze` 压扁，如果这个过程已被封装，则在`forward` 函数返回运算结果之前把矩阵压成数组。
+
+```shell
+UserWarning: Using a target size (torch.Size([16])) that is different to the input size (torch.Size([16, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+```
+
+
 

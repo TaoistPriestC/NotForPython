@@ -23,9 +23,6 @@ class LinearRegression(nn.Module):
         return out 
 
 
-
-
-
 if __name__ == '__main__':
     ## Basic info of the model
     input_dim = 1
@@ -49,7 +46,10 @@ if __name__ == '__main__':
     for ep in range(epoches):
         inputs = torch.from_numpy(x_train).to(device)
         labels = torch.from_numpy(y_train).to(device)
-        
+
+        ### Reset the gradient
+        optimizer.zero_grad() 
+
         ### orward propagation
         outputs = model(inputs).to(device)
 
@@ -63,11 +63,24 @@ if __name__ == '__main__':
         if (ep + 1) % 50 == 0:
             print("epoch = {}, loss = {}".format(ep + 1, loss.item()))
 
-    torch.save(model.state_dict(), "LinearRegression.pkl")
-
-    
     ## Using load_state_dict() to load the pkl file,
     ## Only training once then the model can be reused!
 
+    torch.save(model.state_dict(), "LinearRegression.pkl")
+
+
+    ## Once you activate CUDA, you must pay attention to CPU-GPU conversion! 
     predicted = model(torch.from_numpy(x_train).to(device).requires_grad_()).data.cpu().numpy()
+    
+    ## Print the predictred value and real value 
     print(predicted)
+    print(y_train)
+
+    plt.plot(x_train, predicted)
+    plt.plot(x_train, y_train)
+    plt.show()
+
+# There are many models have been implemented on pytorch hub
+# https://github.com/pytorch/hub
+# https://pytorch.org/hub/research-models
+# 
