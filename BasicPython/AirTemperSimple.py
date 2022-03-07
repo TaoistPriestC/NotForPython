@@ -83,13 +83,13 @@ hidden_size = 128
 output_size = 1
 batch_size = 16
 
-myNN = torch.nn.Sequential(
-    torch.nn.Linear(input_size, hidden_size),
-    torch.nn.Sigmoid(), 
-    torch.nn.Linear(hidden_size, output_size)
+myNN = nn.Sequential(
+    nn.Linear(input_size, hidden_size),
+    nn.Sigmoid(), 
+    nn.Linear(hidden_size, output_size)
 )
 
-cost = torch.nn.MSELoss(reduction = "mean")
+criterion = nn.MSELoss(reduction = "mean")
 optimizer = torch.optim.Adam(myNN.parameters(), lr = 0.001)
 
 losses = []
@@ -113,7 +113,7 @@ if __name__ == '__main__':
                 prediction = myNN(xx)
                 prediction = prediction.squeeze(-1)
 
-                loss = cost(prediction, yy)
+                loss = criterion(prediction, yy)
                 optimizer.zero_grad()
                 
                 loss.backward(retain_graph = True)
