@@ -26,7 +26,7 @@ plt.rcParams["axes.unicode_minus"] = False
 plt.rcParams["lines.linewidth"] = 0.5  
 
 
-#=======================================================================#
+
 # 设置随机数实时显示区域的文字参数
 RT_XLOC = 0.20
 RT_YLOC = 0.95
@@ -37,11 +37,8 @@ BGBOX = {
     'alpha': 0.5,           # 框透明度
     'pad': 8,               # 本文与框周围距离 
 }
-# 关于文字区域背景色设置的方法参考了下面这篇文章:
-# https://zhuanlan.zhihu.com/p/205110001
-# 关于下文随机数采样设置的方法参考了下面这篇文章:
-# https://blog.csdn.net/ddjhpxs/article/details/107766742
-#=======================================================================#
+# 关于文字区域背景色设置的方法参考了这篇文章: https://zhuanlan.zhihu.com/p/205110001
+# 关于下文随机数采样设置的方法参考了这篇文章: https://blog.csdn.net/ddjhpxs/article/details/107766742
 
 
 

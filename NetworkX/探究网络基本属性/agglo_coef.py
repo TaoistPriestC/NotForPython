@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
+# 集聚系数(Agglomeration coefficient)
+# 集聚系数也称集群系数,是用于描述一个图中顶点之间结集成团的程度系数
 INF = int(1e9)
 
 

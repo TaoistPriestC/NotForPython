@@ -5,13 +5,17 @@ from PIL import Image
 from skimage.metrics import structural_similarity as ssim
  
 
-img1 = Image.open('图片1.png')
-img2 = Image.open('图片2.png')
-img3 = Image.open('图片3.png')
+img1 = Image.open('Pic1.png')
+img2 = Image.open('Pic2.png')
+img3 = Image.open('Pic3.png')
 
 img1 = img1.resize((350,350),Image.BICUBIC)
 img2 = img2.resize((350,350),Image.BICUBIC)
 img3 = img3.resize((350,350),Image.BICUBIC)
+
+# img1.save("Pic1.png")
+# img2.save("Pic2.png")
+# img3.save("Pic3.png")
 
 print(img1.size)
 print(img2.size)

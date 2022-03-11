@@ -1,18 +1,19 @@
-### (一)Numpy维度问题
+<h2 ><center  style="color:red;">实干Python笔记</center></h2>
 
-#### (1.1) 自建数组
+
+
+### (一)科学计算三剑客
+
+#### (1.1)Numpy常见问题
+
+**[01]** 使用Torch进行深度学习任务，要把数组转化张量！
 
 ```python
 # Constructing data require the following steps:
 # List -> np.array -> Tensor
-
 ```
 
-
-
-#### (1.2) 数组与矩阵维度问题
-
-使用numpy创建数组`X`，形状 `(x,)` 与`(x,1)`是不同的。前者是数组，元素个数`x`，后者是矩阵，行数`x`，每个行只有一个元素。此时想把数组转为矩阵可以使用 `reshape(-1,1)` 生成新对象，再拿这个引用覆盖原来的变量`X`即可。数组与矩阵进行四则运算，会触发广播机制。
+**[02]** 形状 `(x,)` 与`(x,1)`是不同的。前者是数组，后者是矩阵！
 
 ```python
 # (1)创建一个数组 x.shape = (3,)
@@ -32,14 +33,11 @@ x + y = array([
     [4, 5, 6],
     [5, 6, 7]
 ])
-```
-
-
-
-这种数组与矩阵的维度问题也会出现于torch框架中，比如下列这个经典的报错信息，解决办法是把前向传播的预测值，通过 `sequeeze` 压扁，如果这个过程已被封装，则在`forward` 函数返回运算结果之前把矩阵压成数组。
-
-```shell
-UserWarning: Using a target size (torch.Size([16])) that is different to the input size (torch.Size([16, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+""" 
+	这种数组与矩阵的维度问题也会出现于torch框架中，比如下列这个经典的报错信息:
+	UserWarning: Using a target size (torch.Size([16])) that is different to the input size (torch.Size([16, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+	解决办法是把前向传播的预测值，通过 sequeeze 函数压扁，如果这个过程已被封装，则在`forward` 函数返回运算结果之前把矩阵压成数组。
+"""
 ```
 
 

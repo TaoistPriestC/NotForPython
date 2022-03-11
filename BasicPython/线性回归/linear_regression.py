@@ -66,7 +66,7 @@ if __name__ == '__main__':
     ## Using model.load_state_dict() to load the pkl file,
     ## Only training once then the model can be reused!
 
-    torch.save(model.state_dict(), "./pkl/LinearRegression.pkl")
+    torch.save(model.state_dict(), ".linear_regression.pkl")
 
 
     ## Once you activate CUDA, you must pay attention to CPU-GPU conversion! 
@@ -82,5 +82,4 @@ if __name__ == '__main__':
 
 # There are many models have been implemented on pytorch hub
 # https://github.com/pytorch/hub
-# https://pytorch.org/hub/research-models
-# 
+# https://pytorch.org/hub/research-models 

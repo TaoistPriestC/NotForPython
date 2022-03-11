@@ -9,7 +9,7 @@ import datetime
 from sklearn import preprocessing
 
 
-features = pd.read_csv("./AirTemps.csv")
+features = pd.read_csv("./air_temps.csv")
 features = pd.get_dummies(features)
 feature_list = list(features.columns)
 
@@ -67,15 +67,19 @@ print("Check input features = ", input_features)
 x = torch.tensor(input_features, dtype = torch.float)
 y = torch.tensor(labels, dtype = torch.float)
 
+
 # Init the weight parameters
 weights1 = torch.randn((14, 128), dtype = torch.float, requires_grad = True)
 biases1 = torch.randn(128, dtype = torch.float, requires_grad = True)
 
+
 weights2 = torch.randn((128, 1), dtype = torch.float, requires_grad = True)
 biases2 = torch.randn(1, dtype = torch.float, requires_grad = True)
 
+
 learning_rate = 0.001
 losses = []
+
 
 if __name__ == '__main__':
     # Gradient descent

@@ -9,7 +9,7 @@ import datetime
 from sklearn import preprocessing
 
 
-features = pd.read_csv("./AirTemps.csv")
+features = pd.read_csv("./air_temps.csv")
 features = pd.get_dummies(features)
 feature_list = list(features.columns)
 
@@ -98,7 +98,7 @@ if __name__ == '__main__':
     ## Using MBGD(Mini-batch gradiant descent) method to optimize the model
     try:
         ### Try to load the pkl that used to set paramters
-        myNN.load_state_dict(torch.load("./pkl/AirTemper.pkl"))
+        myNN.load_state_dict(torch.load("./air_temper.pkl"))
 
     except FileNotFoundError as e:
         ### Train it again if there is no pkl file
