@@ -1,4 +1,3 @@
-from cProfile import label
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -145,11 +144,17 @@ def test_damage_prob(alpha, models_set):
         print("Now <k> = {}".format(keys))
         print(s)
         print(ps)
-        print("--------------------")
+        
+        plt.rcParams["font.sans-serif"]=["Microsoft YaHei"]
+        
         plt.xlabel(r"$S$")
         plt.ylabel(r"$P(S) \sim S^{-\alpha}$")
+        
+        # plt.xlabel(r"崩溃规模 $S$")
+        # plt.ylabel(r"崩溃规模的发生概率 $P(S)$")
         plt.scatter(s, ps, label = str(r"$\langle k \rangle$ = " + keys))
     plt.legend([str(r"$\langle k \rangle$ = " + keys)  for keys in data_memo.keys()])
+    plt.savefig("崩溃规模概率.png")
     plt.show()
 
 
@@ -160,4 +165,3 @@ if __name__ == "__main__":
     #     print(avgk)
     np.random.seed(0)
     test_damage_prob(1.5, models_set[:])
-
