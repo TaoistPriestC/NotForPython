@@ -2,18 +2,18 @@
 
 
 
-### (一)科学计算三剑客
+### (壹)科学计算三剑客
 
-#### (1.1)Numpy常见问题
+#### (一)Numpy常见问题
 
-**[01]** 使用Torch进行深度学习任务，要把数组转化张量！
+**[01] 使用Torch进行深度学习任务，要把数组转化张量！**
 
 ```python
 # Constructing data require the following steps:
 # List -> np.array -> Tensor
 ```
 
-**[02]** 形状 `(x,)` 与`(x,1)`是不同的。前者是数组，后者是矩阵！
+**[02] 留意数组与矩阵的形状是不同的，有可能会误触广播机制！**
 
 ```python
 # (1)创建一个数组 x.shape = (3,)
@@ -33,12 +33,59 @@ x + y = array([
     [4, 5, 6],
     [5, 6, 7]
 ])
+
 """ 
-	这种数组与矩阵的维度问题也会出现于torch框架中，比如下列这个经典的报错信息:
-	UserWarning: Using a target size (torch.Size([16])) that is different to the input size (torch.Size([16, 1])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
-	解决办法是把前向传播的预测值，通过 sequeeze 函数压扁，如果这个过程已被封装，则在`forward` 函数返回运算结果之前把矩阵压成数组。
+这种数组与矩阵的维度问题也会出现于torch框架中，
+比如下文的经典报错信息:
+
+	UserWarning: Using a target size (torch.Size([16])) that is different to the input size (torch.Size([16, 1])). 
+	This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+	
+最常用的解决办法是把前向传播的预测值，通过 sequeeze 函数压扁，
+如果这个过程已被封装，则在前向传播的函数返回运算结果之前把矩阵压成数组!
 """
 ```
 
 
+
+### (贰) 深度神经网络
+
+#### (一) CNNs
+
+**[01] 只有带可学习参数的模块才算一层**
+
+```python
+"""
+由于只有Conv与FC带有可学习的参数，
+	Conv-ReLU-Conv-ReLU-Pool 
+	Conv-ReLU-Conv-ReLU-Pool
+	Conv-ReLU-Conv-ReLU-Pool
+	FC
+因而这个网络结构只有七层,设计网络的时候同样参考这一点,代码如下所示:
+"""
+class NumBerCNN(nn.Module):
+    def __init__(self) -> None:
+        super(NumBerCNN, self).__init__()
+        self.conv1 = nn.Sequential(         
+            nn.Conv2d(              
+                in_channels = 1,            
+                out_channels = 16,
+                kernel_size = 5,  
+                stride = 1,       
+                padding = 2       
+            ),
+            nn.ReLU(),                      
+            nn.MaxPool2d(kernel_size = 2)   # 进行池化操作
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(16,32,5,1,2),
+            nn.ReLU(),
+            nn.MaxPool2d(2)
+        )
+        self.out = nn.Linear(32 * 7 * 7, 10)
+```
+
+
+
+#### (二)RNNs
 

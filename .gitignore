@@ -6,8 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# Data Set
+*data*
+
 # Test module
-test*.py
+*test*
 
 # Distribution / packaging
 .Python
