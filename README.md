@@ -2,13 +2,19 @@
 
 这个项目主要用于记录使用Python语言实现的AI学习过程，
 
-接下来给出的提纲主要是对深度学习关键部分的梳理，[机器学习基础](https://github.com/volmodaoist/NotForPython/blob/main/机器学习.md) 详见此处，其它内容放在知识库之中
+接下来给出的提纲主要是对关键部分的梳理，其它内容放在知识库之中，
+
+**机器学习 (Machine Learning)**
+
+- 有监督学习 (Supervised Learning)
+- 无监督学习 (Unsupervised Learning)
+- 强化学习[^1] (Reinforcement Learning)
 
 **初识神经网络 (Neural Network)**
 
 - 感知机 (Perceptron)
 
-- 深度学习基本问题 (Basic Problem in ML)
+- 深度学习基本问题[^2] (Basic Problem in ML)
   - 回归问题 (Regression)
 
   - 分类问题 (Classification)
@@ -22,18 +28,23 @@
         - 反向传播 (Backward)
 
              - 链式法则 (Chain Rule)
-          - 计算图 (Computation Graph)
+          - 计算图[^3] (Computation Graph)
         - 梯度下降 (Grandient Descent )
 
-             - SGD
-             - Momentum
-             - AdaGrad
-             - Adam
+             - SGD/MBGD/BGD
+             - Gradient with Momentum
+             - RMSProp (Root Mean Square Prop)
+             - AdaGrad (Adaptive Gradient)
+             - Adam (Adaptive Moment Estimation)
 - 数学运算相关特性 (Some tricks)
 
   - 向量化机制 (Vectorization Mechanism)
   - 向量广播机制 (Broadcasting Mechanism)
   - 全连接层间矩阵维度 (Getting Matrix Dimensions Right)
+
+，
+
+　
 
 
 
@@ -100,4 +111,12 @@
 
 
 
+
+
+
+## 文中的批注
+
+[^1]: 强化学习与监督学习类似，但在学习过程中没有标签提示对错，而是通过自我评估的方法进行调整，其在机器人控制、计算机游戏、市场战略等领域有着广泛应用，强化学习会用到回归、分类、聚类、降维等各种各样机器学习的算法。
+[^2]: 目前来说，AI 三大核心就是数据、计算资源以及算法，通常有一个新想法，需要写出代码，然后选择一批数据集验证，如果任务规模较大可能需要挂在服务器跑一个月甚至更久。
+[^3]: 对于国内的学生来说，手算链式求导几乎没有任何压力，但是计算图仍然有必要深入学习，因为这是Pytorch自动求导机制的实现基础。
 
